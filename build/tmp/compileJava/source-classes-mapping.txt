@@ -1,2 +1,4 @@
+addressbook/Contact.java
+ addressbook.Contact
 addressbook/AddressBook.java
  addressbook.AddressBook
