@@ -102,6 +102,25 @@ public class AddressBook
             }
         }
     }
+    public void deleteContact() {
+        System.out.println("Enter Firstname want to delete");
+        String name = scanner.next();
+        for (int i=0; i< contactlist.size(); i++)
+        {
+            String personname = contactlist.get(i).firstName;
+            if(name.equals(personname))
+            {
+                contactlist.remove(i);
+                System.out.println("Persons details deleted sucessfully");
+                break;
+            }
+            else
+            {
+                System.out.println("Please Enter valid name want to delete");
+            }
+        }
+
+    }
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
@@ -109,10 +128,11 @@ public class AddressBook
         AddressBook addressBook = new AddressBook();
         addressBook.createContact();
         addressBook.displayContact();
+       // addressBook.deleteContact();
         int choice = 1;
         do
         {
-            System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. EXIT");
+            System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. Delete Contact\n4. EXIT");
             int userchoice = scanner.nextInt();
             switch (userchoice)
             {
@@ -122,11 +142,12 @@ public class AddressBook
                 case 2:
                     addressBook.updateContact();
                     break;
+                case 3:
+                    addressBook.deleteContact();
+                    break;
                 default:
                     break;
             }
         }while (choice == 0);
     }
-
-
 }
