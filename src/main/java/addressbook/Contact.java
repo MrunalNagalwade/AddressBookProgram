@@ -7,19 +7,20 @@ public class Contact {
     String city;
     String state;
     String email;
-    long mobile_No;
+    int mobile_No;
     int zip;
 
-    public Contact(String firstname, String firstName, String lastName, String address, String state, String email, int zip, long mobileNo)
+    public Contact( String firstName, String lastName, String address, String city,String state, String email, int
+            mobile_No, int zip)
     {
         this.firstName = firstName;
-        this.lastName = this.lastName;
-        this.address = this.address;
+        this.lastName = lastName;
+        this.address = address;
         this.city = city;
-        this.state = this.state;
-        this.email = this.email;
+        this.state = state;
+        this.email = email;
         this.mobile_No = mobile_No;
-        this.zip = this.zip;
+        this.zip = zip;
     }
 
     public String getFirstName() {
@@ -66,7 +67,7 @@ public class Contact {
         return mobile_No;
     }
 
-    public void setMobile_No(long mobile_No) {
+    public void setMobile_No(int mobile_No) {
         this.mobile_No = mobile_No;
     }
 
