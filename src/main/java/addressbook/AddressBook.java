@@ -132,7 +132,7 @@ public class AddressBook
         int choice = 1;
         do
         {
-            System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. Delete Contact\n4.. EXIT");
+            System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. Delete Contact\n4. EXIT");
             int userchoice = scanner.nextInt();
             switch (userchoice)
             {
