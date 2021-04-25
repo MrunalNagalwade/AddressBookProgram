@@ -156,6 +156,7 @@ public class AddressBook
         int choice = 1;
         do
         {
+
             System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. Delete Contact\n4.Add new address book\n5.Dispalay Address book\n6. EXIT");
             int userchoice = scanner.nextInt();
             switch (userchoice)
@@ -182,4 +183,8 @@ public class AddressBook
         }while (choice == 0);
     }
 
+
 }
+
+
+
