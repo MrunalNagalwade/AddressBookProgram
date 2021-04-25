@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class AddressBook
 {
     public ArrayList<Contact> contactlist = new ArrayList<>();
+    ArrayList<AddressBookList> addressBookNameList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     public void createContact()
     {
@@ -31,6 +32,8 @@ public class AddressBook
         System.out.println(contactlist.add(contact));
         System.out.println("Person Details added Successfully");
         System.out.println("You can add multiple person entry");
+        // System.out.println(contact.toString());
+        //  contactlist.add(contact);
     }
     public void displayContact()
     {
@@ -121,6 +124,27 @@ public class AddressBook
         }
 
     }
+    public AddressBookList newAddressBook()
+    {
+        System.out.println("Enter Addressbook Name");
+        String addressBookName = scanner.next();
+        AddressBookList addressBookList = new AddressBookList(addressBookName);
+        addressBookNameList.add(addressBookList);
+        System.out.println("Adreess book added successfully");
+        System.out.println(displayAddressBook());
+        System.out.println(newAddressBook());
+        return addressBookList;
+    }
+    public int displayAddressBook()
+    {
+        System.out.println("Addressbook Name are:");
+        for (AddressBookList addressBookList1 : addressBookNameList)
+        {
+            System.out.println(addressBookList1);
+        }
+
+        return 0;
+    }
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
@@ -128,11 +152,11 @@ public class AddressBook
         AddressBook addressBook = new AddressBook();
         addressBook.createContact();
         addressBook.displayContact();
-       // addressBook.deleteContact();
+        // addressBook.deleteContact();
         int choice = 1;
         do
         {
-            System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. Delete Contact\n4.. EXIT");
+            System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. Delete Contact\n4.Add new address book\n5.Dispalay Address book\n6. EXIT");
             int userchoice = scanner.nextInt();
             switch (userchoice)
             {
@@ -146,10 +170,16 @@ public class AddressBook
                 case 3:
                     addressBook.deleteContact();
                     break;
-
+                case 4:
+                    addressBook.newAddressBook();
+                    break;
+                case 5:
+                    addressBook.displayAddressBook();
+                    break;
                 default:
                     break;
             }
         }while (choice == 0);
     }
+
 }
