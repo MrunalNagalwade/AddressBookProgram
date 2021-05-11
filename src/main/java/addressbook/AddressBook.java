@@ -13,6 +13,8 @@ public class AddressBook
 
         System.out.println("Enter Firstname");
         String firstname = scanner.next();
+        duplicateCheck(firstname);
+
         System.out.println("Enter Last Name");
         String lastName = scanner.next();
         System.out.println("Enter Address");
@@ -145,6 +147,37 @@ public class AddressBook
 
         return 0;
     }
+    public void duplicateCheck(String firstname)
+    {
+        for (int k = 0; k < contactlist.size(); k++)
+        {
+            String contactName = contactlist.get(k).firstName;
+
+            if (firstname.equals(contactName))
+            {
+                System.out.println("Person already exist");
+            }
+            else
+            {
+                System.out.println("Add this person");
+                break;
+            }
+        }
+    }
+    public void searchByCity()
+    {
+        System.out.println("Enter City to search Person by city name");
+        String userCity = scanner.next();
+
+        contactlist.stream().filter(map -> map.getCity().contains(userCity)).forEach(contactlist -> System.out.println(contactlist));
+    }
+    public void searchByState()
+    {
+        System.out.println("Enter the state to search Person");
+        String userState = scanner.next();
+
+        contactlist.stream().filter(map -> map.getState().contains(userState)).forEach(contactlist -> System.out.println(contactlist));
+    }
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
@@ -157,7 +190,10 @@ public class AddressBook
         do
         {
 
-            System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. Delete Contact\n4.Add new address book\n5.Dispalay Address book\n6. EXIT");
+            System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. " +
+                    "Delete Contact\n4.Add new address book\n5." +
+                    "Dispalay Address book\n6.Search By City\n7.Search By State" +
+                    "\n7. EXIT");
             int userchoice = scanner.nextInt();
             switch (userchoice)
             {
@@ -177,14 +213,15 @@ public class AddressBook
                 case 5:
                     addressBook.displayAddressBook();
                     break;
+                case 6:
+                    addressBook.searchByCity();
+                    break;
+                case 7:
+                    addressBook.searchByState();
+                    break;
                 default:
                     break;
             }
         }while (choice == 0);
     }
-
-
 }
-
-
-
