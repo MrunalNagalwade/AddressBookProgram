@@ -197,6 +197,49 @@ public class AddressBook
         System.out.println(contactlist.stream().collect(Collectors.groupingBy((Contact C) -> C.getState())));
         System.out.println((contactlist.stream().collect(Collectors.groupingBy((Contact C) -> C.getState(),Collectors.counting()))));
     }
+    public void sortPersonName(){
+        for (Contact C : contactlist){
+            System.out.println(C.getFirstName());
+        }
+        System.out.println("Sorting List of Persons by FirstName");
+        contactlist.stream();
+        contactlist.sort(Comparator.comparing(Contact::getFirstName));
+        contactlist.forEach((Contact C) -> System.out.println(C.getFirstName() + " " + C.getLastName()));
+
+    }
+    public void sortPersonByCity()
+    {
+        for (Contact C : contactlist)
+        {
+            System.out.println(C.getCity());
+        }
+        System.out.println("Sorting List of Persons by City");
+        contactlist.stream();
+        contactlist.sort(Comparator.comparing(Contact::getCity));
+        contactlist.forEach((Contact C) -> System.out.println(C.getFirstName() + " " + C.getLastName() + " " + C.getCity()));
+    }
+    public void sortPersonByState()
+    {
+        for (Contact C : contactlist)
+        {
+            System.out.println(C.getState());
+        }
+        System.out.println("Sorting List of Persons by State");
+        contactlist.stream();
+        contactlist.sort(Comparator.comparing(Contact::getState));
+        contactlist.forEach((Contact C) -> System.out.println(C.getFirstName() + " " + C.getLastName() + " " + C.getCity() + " " + C.getState()));
+    }
+    public void sortPersonByZip()
+    {
+        for (Contact C : contactlist)
+        {
+            System.out.println(C.getZip());
+        }
+        System.out.println("Sorting List of Persons by Zip");
+        contactlist.stream();
+        contactlist.sort(Comparator.comparing(Contact::getZip));
+        contactlist.forEach((Contact C) -> System.out.println(C.getFirstName() + " " + C.getLastName() + " " + C.getCity() + " " + C.getState() + " " + C.getZip()));
+    }
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
@@ -210,7 +253,8 @@ public class AddressBook
         {
             System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. " +
                     "Delete Contact\n4.Add new address book\n5." +
-                    "Dispalay Address book\n6.Search By City\n7.Search By State" +
+                    "Dispalay Address book\n6.Search By City\n7.Search By State\n8." +
+                    "Sort Persons By FirstName\n9.Sort Persons By City\n10.Sort Persons By State\n11.Sort Persons By Zip" +
                     "\n7. EXIT");
             int userchoice = scanner.nextInt();
             switch (userchoice)
@@ -240,12 +284,18 @@ public class AddressBook
                     addressBook.searchByState();
                     addressBook.countByState();
                     break;
-               /* case 8:
-                    addressBook.countByCity();
+                case 8:
+                    addressBook.sortPersonName();
                     break;
                 case 9:
-                    addressBook.countByState();
-                    break;*/
+                    addressBook.sortPersonByCity();
+                    break;
+                case 10:
+                    addressBook.sortPersonByState();
+                    break;
+                case 11:
+                    addressBook.sortPersonByZip();
+                    break;
                 default:
                     break;
             }
