@@ -197,6 +197,16 @@ public class AddressBook
         System.out.println(contactlist.stream().collect(Collectors.groupingBy((Contact C) -> C.getState())));
         System.out.println((contactlist.stream().collect(Collectors.groupingBy((Contact C) -> C.getState(),Collectors.counting()))));
     }
+    public void sortPersonName(){
+        for (Contact C : contactlist){
+            System.out.println(C.getFirstName());
+        }
+        System.out.println("Sorting List of Persons by FirstName");
+        contactlist.stream();
+        contactlist.sort(Comparator.comparing(Contact::getFirstName));
+        contactlist.forEach((Contact C) -> System.out.println(C.getFirstName() + " " + C.getLastName()));
+
+    }
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
@@ -210,7 +220,7 @@ public class AddressBook
         {
             System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. " +
                     "Delete Contact\n4.Add new address book\n5." +
-                    "Dispalay Address book\n6.Search By City\n7.Search By State" +
+                    "Dispalay Address book\n6.Search By City\n7.Search By State\n8.Sort Persons By FirstName" +
                     "\n7. EXIT");
             int userchoice = scanner.nextInt();
             switch (userchoice)
@@ -240,12 +250,10 @@ public class AddressBook
                     addressBook.searchByState();
                     addressBook.countByState();
                     break;
-               /* case 8:
-                    addressBook.countByCity();
+                case 8:
+                    addressBook.sortPersonName();
                     break;
-                case 9:
-                    addressBook.countByState();
-                    break;*/
+
                 default:
                     break;
             }
