@@ -1,7 +1,6 @@
 package addressbook;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBook
 {
@@ -34,8 +33,6 @@ public class AddressBook
         System.out.println(contactlist.add(contact));
         System.out.println("Person Details added Successfully");
         System.out.println("You can add multiple person entry");
-        // System.out.println(contact.toString());
-        //  contactlist.add(contact);
     }
     public void displayContact()
     {
@@ -168,15 +165,28 @@ public class AddressBook
     {
         System.out.println("Enter City to search Person by city name");
         String userCity = scanner.next();
-
-        contactlist.stream().filter(map -> map.getCity().contains(userCity)).forEach(contactlist -> System.out.println(contactlist));
+        Dictionary Citywisedict = new Hashtable();
+        contactlist.stream().filter(map -> map.getCity().contains(userCity)).forEach(contactlist ->
+                Citywisedict.put(contactlist.getFirstName(),userCity));
+        System.out.println("City Name: " + userCity);
+        for (Enumeration i = Citywisedict.keys(); i.hasMoreElements();)
+        {
+            System.out.println("Name : " + i.nextElement());
+        }
+        //contactlist.stream().filter(map -> map.getCity().contains(userCity)).forEach(contactlist -> System.out.println(contactlist));
     }
     public void searchByState()
     {
         System.out.println("Enter the state to search Person");
         String userState = scanner.next();
-
-        contactlist.stream().filter(map -> map.getState().contains(userState)).forEach(contactlist -> System.out.println(contactlist));
+        Dictionary Statewisedict = new Hashtable();
+        contactlist.stream().filter(map -> map.getState().contains(userState)).forEach(contactlist ->
+                Statewisedict.put(contactlist.getFirstName(),userState));
+        System.out.println("State Name: " + userState);
+        for (Enumeration i = Statewisedict.keys(); i.hasMoreElements();)
+        {
+            System.out.println("Name : " + i.nextElement());
+        }
     }
     public static void main(String[] args)
     {
@@ -186,10 +196,9 @@ public class AddressBook
         addressBook.createContact();
         addressBook.displayContact();
         // addressBook.deleteContact();
-        int choice = 1;
+        int choice = 0;
         do
         {
-
             System.out.println("Enter Choice:\n1. Add Contact\n2. Edit Contact\n3. " +
                     "Delete Contact\n4.Add new address book\n5." +
                     "Dispalay Address book\n6.Search By City\n7.Search By State" +
